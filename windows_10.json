@@ -1,0 +1,49 @@
+{
+  "builders": [
+    {
+      "type": "vmware-iso",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "headless": "{{user `headless`}}",
+      "boot_wait": "2m",
+      "communicator": "winrm",
+      "winrm_username": "vagrant",
+      "winrm_password": "vagrant",
+      "winrm_timeout": "2h",
+      "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "guest_os_type": "windows8srv-64",
+      "tools_upload_flavor": "windows",
+      "disk_size": "{{user `disk_size`}}",
+      "vnc_port_min": 5900,
+      "vnc_port_max": 5980,
+      "floppy_files": [
+        "{{ user `autounattend` }}",
+        "./scripts/ConfigureRemotingForAnsible.ps1"
+      ],
+      "vmx_data": {
+        "RemoteDisplay.vnc.enabled": "false",
+        "RemoteDisplay.vnc.port": "5900",
+        "memsize": "{{user `memory_size`}}",
+        "numvcpus": "{{user `cpus`}}",
+        "scsi0.virtualDev": "lsisas1068"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "powershell",
+      "inline": ["echo 'blarg' > c:\\test.txt"]
+    }
+  ],
+  "variables": {
+    "iso_url": "iso/SW_DVD9_Win_Pro_Ent_Edu_N_10_1803_64BIT_English_-4_MLF_X21-87129.iso",
+    "iso_checksum_type": "sha256",
+    "iso_checksum": "100B3C27F080800EF6514C9FFEB9A85CF55182925E377E6ABE31612F46F83FC2",
+    "autounattend": "./answer_files/10/Autounattend.xml",
+    "headless": "false",
+    "cpus": "2",
+    "memory_size": "2048",
+    "disk_size": "61440"
+  }
+}

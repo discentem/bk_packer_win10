@@ -43,7 +43,7 @@
     "autounattend": "./answer_files/10/Autounattend.xml",
     "headless": "false",
     "cpus": "2",
-    "memory_size": "2048",
+    "memory_size": "3096",
     "disk_size": "61440"
   }
 }

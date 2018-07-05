@@ -19,6 +19,7 @@
       "vnc_port_max": 5980,
       "floppy_files": [
         "{{ user `autounattend` }}",
+        "./scripts/fixnetwork.ps1",
         "./scripts/ConfigureRemotingForAnsible.ps1"
       ],
       "vmx_data": {

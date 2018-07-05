@@ -23,6 +23,7 @@
         "./scripts/fixnetwork.ps1",
         "./scripts/ConfigureRemotingForAnsible.ps1"
       ],
+      "version": "14",
       "vmx_data": {
         "RemoteDisplay.vnc.enabled": "false",
         "RemoteDisplay.vnc.port": "5900",

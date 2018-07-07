@@ -1,2 +1,5 @@
 *.iso*
 output-*
+output-vmware-iso/
+packer_cache/
+iso/
